@@ -1,0 +1,432 @@
+<div class="default-primary-header">
+  <h1>Coordmap</h1>
+</div>
+
+<div class="mat-typography">
+
+  <h1 class="mat-display-1">Shared Coordmap Map</h1>
+
+    <link rel="stylesheet" type="text/css" href="https://coord.co/styles/fonts.css">
+    <link rel="stylesheet" type="text/css" href="https://coord.co/bike-example/style.css">
+    
+    <div id="map"></div>
+    <div id="info">
+      <div id="headline">Loading...</div>
+      <div id="body"></div>
+      <div id="warning"></div>
+      <a id="clear" href="javascript:void(0)" onclick="reset()">Clear</a>
+      <div id="legend">
+        <div id="capitalbikeshare">
+          <img src="https://coord.co/assets/capitalbikeshare-bike-available.png" alt="Capital Bikeshare" height="36px" width="24px" />
+          <span>Capital Bikeshare (docked)</span>
+        </div>
+        <div id="jumpdc">
+          <img src="https://coord.co/assets/dockless-jump.png" alt="JUMP" height="36px" width="24px" />
+          <span>JUMP</span>
+        </div>
+        <div id="mobikedc">
+          <img src="https://coord.co/assets/dockless-mobike.png" alt="Mobike" height="36px" width="24px" />
+          <span>Mobike</span>
+        </div>
+        <div id="spindc">
+          <img src="https://coord.co/assets/dockless-spin.png" alt="Spin" height="36px" width="24px" />
+          <span>Spin</span>
+        </div>
+        <div id="docked-empty">
+          <img src="https://coord.co/assets/docked-empty.png" alt="Capital Bikeshare Available Dock" height="36px" width="24px" />
+          <span>Available dock</span>
+        </div>
+        <div id="docked-full">
+          <img src="https://coord.co/assets/docked-full.png" alt="Capital Bikeshare Full Dock" height="36px" width="24px" />
+          <span>Full dock</span>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+/******************************************* Constants *******************************************/
+
+// Your Coord API key.
+var COORD_API_KEY = 'AIzaSyBJp8jcS3rHJICJb2q-laO4BmvKjWF62BM';
+
+// p9H_wRiQaoEoIKQBaJnA1oR77yCBY-6Z-AEku8bgJNk
+var BIKE_API_URL = 'https://api.coord.co/v1/bike';
+var DC_CENTERX = {lat: 38.9072, lng: -77.0369};
+var DC_CENTER = {lat: 33.7490, lng: -84.3880};
+var SEARCH_RADIUS_KM = 3;
+var LEGEND_ITEMS = [
+  'capitalbikeshare',
+  'jumpdc',
+  'mobikedc',
+  'spindc',
+  'docked-empty',
+  'docked-full',
+];
+var FREE_BIKE_LOCATION_TYPE = 'free_bike';
+var SYSTEM_TO_ICON; // Mapping of system ID to icon information.
+
+/******************************************** Globals ********************************************/
+
+var map;                        // google.maps.Map object we render on.
+var originBike = null;          // JSON representation of the bike that we start from.
+var serviceArea = null;         // google.maps.Feature representing the service area for dockless
+                                // bike systems.
+var allBikes = [];              // Array of all bikes in DC that can be rented. Each array item
+                                // includes the bike's JSON representation and its marker.
+
+var directionsService = null;   // google.maps.DirectionsService object for getting route polyline.
+var directionsRenderer = null;  // google.maps.DirectionsRenderer object for showing route on map.
+
+// Element selectors.
+var headlineElement = document.getElementById('headline');
+var bodyElement = document.getElementById('body');
+var warningElement = document.getElementById('warning');
+var clearElement = document.getElementById('clear');
+
+/********************************************* Code *********************************************/
+
+/** Initialize the map (called on load). */
+function initMap() {
+  // Show the DC area on the map.
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: DC_CENTER,
+    zoom: 15,
+    styles: customMapStyles,
+    fullscreenControl: false,
+    mapTypeControl: false,
+  });
+
+  // Initialize the directions rendering objects.
+  directionsService = new google.maps.DirectionsService();
+  directionsRenderer = new google.maps.DirectionsRenderer({suppressMarkers: true});
+
+  // Format modal.
+  headlineElement.innerHTML = 'Select a dockless bike or bike station to set your origin.';
+  clearElement.style.display = 'none';
+  // We only want to show the available/full legend items when we use a docked bike and select
+  // a destination.
+  document.getElementById('docked-empty').style.display = 'none';
+  document.getElementById('docked-full').style.display = 'none';
+
+  SYSTEM_TO_ICON = {
+    CapitalBikeShare: {
+      url: 'https://coord.co/assets/capitalbikeshare-bike-available.png',
+      scaledSize: new google.maps.Size(32, 48),
+    },
+    SpinDC: {
+      url: 'https://coord.co/assets/dockless-spin.png',
+      scaledSize: new google.maps.Size(28, 42),
+    },
+    MobikeDC: {
+      url: 'https://coord.co/assets/dockless-mobike.png',
+      scaledSize: new google.maps.Size(28, 42),
+    },
+    JumpDC: {
+      url: 'https://coord.co/assets/dockless-jump.png',
+      scaledSize: new google.maps.Size(28, 42),
+    },
+  };
+
+  // Render all available bikes within SEARCH_RADIUS_KM of DC_CENTER.
+  renderBikes();
+
+  map.addListener('click', handleMapClick);
+}
+
+/** Call the bike share API, filter out bike stations that don't have available bikes or are not
+ *  currently renting bikes out, and then render them as markers on the map.
+ */
+function renderBikes() {
+  var url = BIKE_API_URL + '/location?access_key=' + COORD_API_KEY + '&latitude='
+    + DC_CENTER.lat + '&longitude=' + DC_CENTER.lng + '&radius_km=' + SEARCH_RADIUS_KM;
+  getRequest(url).then(function(bikes) {
+    if (!bikes.features) {
+      return;
+    }
+
+    bikes.features.forEach(function(bike) {
+      // We need to filter for bikes that are available. These could be free bikes or stations,
+      // as long as they contain at least one available bike and are renting bikes out.
+      if (bike.properties.is_renting && bike.properties.num_bikes_available > 0) {
+        var bikeMarker = new google.maps.Marker({
+          position: {lat: bike.properties.lat, lng: bike.properties.lon},
+          map: map,
+          icon: SYSTEM_TO_ICON[bike.properties.system_id],
+        });
+        bikeMarker.addListener('click', function(event) { handleBikeClick(event, bike); });
+        allBikes.push({bikeMarker: bikeMarker, bikeJSON: bike});
+      }
+    });
+  });
+}
+
+/** Handle a click on a bike marker. */
+function handleBikeClick(event, bike) {
+  clearElement.style.display = 'block';
+
+  if (!originBike) {
+    handleOriginBikeClick(event, bike);
+  } else {
+    setLegend([]);
+    handleRouting(event.latLng);
+  }
+}
+
+/** Handle a click on bike location marker (dockless and bike station) when selecting an origin. */
+function handleOriginBikeClick(event, selectedBike) {
+  var legendItems;
+  if (selectedBike.properties.location_type === FREE_BIKE_LOCATION_TYPE) {
+    // Show the service area of the bike system if the selected bike is a dockless bike. Any
+    // dockless bike returned outside of this area may incur a fee.
+    getSystem(selectedBike.properties.system_id).then(function(system) {
+      var features = map.data.addGeoJson(system);
+      serviceArea = features[0];
+      map.data.overrideStyle(serviceArea, {fillOpacity: 0.07, fillColor: '#2979FF', strokeColor: '#2979FF'});
+      map.data.addListener('click', handleMapClick);
+
+      bodyElement.innerHTML = system.geometry
+        ? 'Reminder: dockless bikes should be dropped off within the blue service area to avoid a potential fee.'
+        : 'Please select a destination';
+    });
+
+    // Remove all markers from the map - because we've selected a dockless bike, we can select any
+    // destination.
+    allBikes.forEach(function(bike) { bike.bikeMarker.setMap(null); });
+
+    legendItems = [];
+  } else {
+    // Remove all dockless markers and the selected bike station marker (it will now show up as
+    // the origin) from the map. We can now only select a bike station as a destination.
+    allBikes.forEach(function(bike) {
+      var bikeJSON = bike.bikeJSON;
+      if (bikeJSON.properties.location_type === FREE_BIKE_LOCATION_TYPE ||
+          bikeJSON.id === selectedBike.id) {
+        bike.bikeMarker.setMap(null);
+      } else if (bikeJSON.properties.system_id === selectedBike.properties.system_id) {
+        // Set the icons based on whether or not a bike station is accepting returns.
+        var iconURL = bikeJSON.properties.is_returning && bikeJSON.properties.num_docks_available > 0
+          ? 'https://coord.co/assets/docked-empty.png'
+          : 'https://coord.co/assets/docked-full.png';
+        bike.bikeMarker.setIcon({url: iconURL, scaledSize: new google.maps.Size(32, 48)});
+      }
+    });
+
+    bodyElement.innerHTML = 'Select a destination dock.';
+    legendItems = ['docked-empty', 'docked-full'];
+  }
+
+  // Format modal.
+  headlineElement.innerHTML = selectedBike.properties.system_id;
+  bodyElement.style.display = 'block';
+  setLegend(legendItems);
+  // Set the origin globals.
+  originBike = selectedBike;
+  setPoint(event.latLng, 'origin');
+}
+
+/** Set a point. This could either be the origin or destination. */
+function setPoint(latLng, type) {
+  var feature = new google.maps.Data.Feature({id: type, geometry: latLng});
+  map.data.add(feature);
+  map.data.overrideStyle(feature, {
+    zIndex: 2,
+    icon: {
+      url: 'https://coord.co/assets/pin-' + type + '.png',
+      scaledSize: new google.maps.Size(32, 48),
+    },
+  });
+  warning.innerHTML = '';
+}
+
+/** Show items in the legend based on the input array of items. */
+function setLegend(visibleItems) {
+  LEGEND_ITEMS.forEach(function(item) {
+    if (visibleItems.indexOf(item) !== -1) {
+      document.getElementById(item).style.display = 'flex';
+    } else {
+      document.getElementById(item).style.display = 'none';
+    }
+  })
+}
+
+/** Call the bike share API to get information on a system. We use this specifically in the demo
+ *  for getting the service area of dockless bike systems.
+ */
+ function getSystem(systemID) {
+  var url = BIKE_API_URL + '/system/' + systemID + '?access_key=' + COORD_API_KEY;
+  return getRequest(url);
+}
+
+/** Handle a click on the map. */
+function handleMapClick(event) {
+  // We only route when the user has already clicked a dockless bike as the origin.
+  if (originBike && originBike.properties.location_type === FREE_BIKE_LOCATION_TYPE) {
+    handleRouting(event.latLng);
+  }
+}
+
+/** Set up the UI in preparation for routing and then call Google's Directions API to find the
+ *  route.
+ */
+function handleRouting(destination) {
+  // Remove service area and bikes.
+  if (serviceArea) {
+    map.data.remove(serviceArea);
+    serviceArea = null;
+  }
+  allBikes.forEach(function(bike) { bike.bikeMarker.setMap(null); });
+
+  warning.innerHTML = '';
+  setPoint(destination, 'destination');
+  var origin = new google.maps.LatLng(originBike.properties.lat, originBike.properties.lon);
+  calculateRoute(origin, destination);
+}
+
+/** Calculate the route using Google's directions API and then calculate the cost of the trip
+ *  based on Google's directions.
+ */
+function calculateRoute(origin, destination) {
+  directionsService.route(
+    {origin, destination, travelMode: 'BICYCLING'},
+    function(response, status) {
+      if (status !== 'OK') {
+        headline.innerHTML = '';
+        warning.innerHTML = 'Error calculating route.';
+        warning.style.display = 'block';
+        return;
+      }
+
+      directionsRenderer.setDirections(response);
+      directionsRenderer.setMap(map);
+
+      populateTripInfo(response);
+    }
+  );
+}
+
+/** Calculate the trip duration and cost, formats them in a human-readable way, and displays
+ *  them.
+ */
+function populateTripInfo(directions) {
+  // There should only be 1 leg for the route.
+  var leg = directions.routes[0].legs[0];
+  // Travel time is needed for calculating cost and showing trip duration.
+  var travelTimeSeconds = leg.duration.value;
+
+  // Call the bike share API to get quotes for the bike and then calculate cost.
+  getQuotes(originBike.properties.system_id).then(function(quotes) {
+    if (quotes.length === 0) {
+      headlineElement.innerHTML = 'No quotes found for the given ride.';
+      return;
+    }
+    var costInCents = calculateCostInCents(quotes, travelTimeSeconds);
+
+    headlineElement.innerHTML = originBike.properties.system_id + ': $' + (costInCents/100).toFixed(2);
+    bodyElement.innerHTML = '<b>Start:</b> ' + leg.start_address + '<br />';
+    bodyElement.innerHTML += '<b>End:</b> ' + leg.end_address + '<br />';
+    bodyElement.innerHTML += '<b>Distance:</b> ' + leg.distance.text + '<br />';
+    bodyElement.innerHTML += '<b>Travel Time:</b> ' + (travelTimeSeconds/60).toFixed(0) + ' min';
+  });
+}
+
+/** Call the bike share API to get quotes for a bike system. */
+function getQuotes(systemID) {
+  var url = BIKE_API_URL + '/quote?access_key=' + COORD_API_KEY + '&system_ids=' + systemID;
+  return getRequest(url)
+}
+
+/** Calculate cost of the trip. */
+function calculateCostInCents(quotes, travelTimeSeconds) {
+  // There can be multiple quotes for a bike system. We choose to use the pass with the least cost
+  // for this trip. For systems that charge by time, the base cost will be 0 - all of the costs
+  // incurred by the trip will fall under the incremental cost below.
+  var baseCost = Math.min(...quotes.map(function(quote) { return quote.cost.amount; }));
+  // Passes have fees for going over specific ride durations.
+  var incrementalCost = 0;
+  var usedPass = quotes.filter(function(quote) { return quote.cost.amount === baseCost })[0];
+  // There should only be 1 tax rate for any bike system within DC.
+  var taxRate = usedPass.tax_regions[0].tax_rate;
+
+  // Calculate incremental costs for the trip using the usage fees array.
+  usedPass.usage_fees.forEach(function(usageFee) {
+    // Only apply the usage fee if its start time comes after the travel time of the trip. For
+    // example, if the trip lasts 300 seconds and the current usage fee starts at 450 seconds,
+    // we won't apply the fee.
+    if (travelTimeSeconds < usageFee.start_time_seconds) {
+      return;
+    }
+
+    // fee_increment_seconds denotes when a usage fee is charged at an interval. For example,
+    // if a usage fee charges for $1 for every 30 minutes past a 60 minute right, it'll be
+    // modeled as having: fee_increment_seconds=1800, start_time_seconds=3600, and amount=100.
+    // For other usage fees, you are charged for simply going past a certain ride duration. For
+    // example, if a usage fee charges $1 if you go past 30 min, it'll be modeled as having:
+    // start_time_seconds=3600 and amount=100.
+    var multiplier = usageFee.fee_increment_seconds > 0
+      ? Math.ceil((travelTimeSeconds - usageFee.start_time_seconds) / usageFee.fee_increment_seconds)
+      : 1;
+    incrementalCost += multiplier * usageFee.cost.amount;
+  });
+
+  var totalCost = baseCost + incrementalCost;
+  return totalCost + totalCost*taxRate;
+}
+
+/** Get request to a URL. */
+function getRequest(url) {
+  return fetch(url).then(function(response) { return response.json(); });
+}
+
+/** Set the UI and global variables to their initial state. */
+function reset() {
+  // Reset globals.
+  originBike = null;
+  serviceArea = null;
+
+  // Show all bikes.
+  allBikes.forEach(function(bike) {
+    // Reset the Capital BikeShare icons.
+    if (bike.bikeJSON.properties.system_id === 'CapitalBikeShare') {
+      bike.bikeMarker.setIcon(SYSTEM_TO_ICON['CapitalBikeShare']);
+    }
+    bike.bikeMarker.setMap(map);
+  });
+
+  // Remove all features.
+  map.data.forEach(function(feature) { map.data.remove(feature); });
+
+  // Remove all style overrides.
+  map.data.revertStyle();
+
+  // Reset the info window.
+  headlineElement.innerHTML = 'Select a dockless bike or bike station to set your origin.';
+  bodyElement.innerHTML = '';
+  bodyElement.style.display = 'none';
+  warningElement.style.display = 'none';
+  clearElement.style.display = 'none';
+  setLegend(['capitalbikeshare', 'jumpdc', 'mobikedc', 'spindc']);
+
+  // Remove the rendered biking path.
+  directionsRenderer.setMap(null);
+}
+
+    </script>
+    <script src="https://coord.co/bike-example/map-style.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJp8jcS3rHJICJb2q-laO4BmvKjWF62BM&callback=initMap"
+    async defer></script>
+    <!--
+      Uses Google API for "Georgia Cloud" limited to *.georgia.org, smartparks.github.io, and georgiadata.github.io,
+      coord API, only works on local host:
+      AIzaSyBMROACu-pmNQBh98gzstsnCrxLmzwTsBM  
+    -->
+
+
+
+
+  <div class="mat-body">
+    <p>
+      Source: Coord.co
+    </p>
+
+  </div>
+</div>
