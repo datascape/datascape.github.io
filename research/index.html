@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+
+    <!--
+    <script src="https://cdn-webgl.wrld3d.com/wrldjs/dist/latest/wrld.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" rel="stylesheet" />
+    -->
+    
+    <!--
+    	View in browser
+    	http://localhost/site/docs/documentation/3d/wrld/
+
+    	UNITY Documentation
+    	https://docs.wrld3d.com/unity/latest/docs/examples/
+
+		JavaScript Documentation
+		https://docs.wrld3d.com/wrld.js/latest/docs/examples/
+
+    	Sample of moving map, includes Google address lookup behind scenes.
+		https://www.sitepoint.com/building-dynamic-3d-maps/
+
+    	
+    	Points of Interest (POI) - Could be used for tourism
+    	https://github.com/wrld3d/wrld-poi-api
+
+
+    	https://docs.wrld3d.com/wrld.js/latest/docs/examples/poi-api/
+    -->
+
+    <link href="/base/css/base.css" rel="stylesheet" type="text/css" >
+    <link href="/api/css/api.css" rel="stylesheet" type="text/css" >
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" >
+    <link rel="icon" type="image/x-icon" href="img/icons/favicon.ico" />
+  </head>
+  
+  <body style="margin:0px">
+
+  <div style="height:100px">
+    Header
+  </div>
+
+  <!--
+    GOOGLE 3D BUILDING API
+    https://cloud.google.com/maps-platform/gaming/
+  -->
+  <div style="position:relative; max-width:100%; height:400px; overflow: hidden;">
+
+    <div style="position:absolute; width:100%; height:100%; background-color: rgba(33, 44, 100, 0.7); z-index:99999">
+        <div style="width:600px;min-height:200px;margin:0 auto; margin-top:50px; padding:30px; color:#fff; text-align:center; font-family: helvetica, ariel">
+
+            <!--
+            <h1>CrowdShare</h1>
+            <h2>Privacy-Protected Data Collection</h2>
+            -->
+
+            <h1>Network Dynamics Lab</h1>
+            <h2 style="color:white">Research and Project Journals - Loren Heyns</h2>
+            <br><br><br>
+
+            <h4 style="color:#bbb">Georgia Tech Construction and Infrastructure Systems</h4>
+
+            <h4 style="color:#bbb">Advisor John E. Taylor, Mentor Neda Mohammadi</h4>
+
+        </div>
+    </div>
+
+    <video class="video-block" src="https://developers.google.com/maps/images/gaming/GLOBAL.mp4" autoplay="" loop="" muted="" style="width:100%"></video>
+  </div>
+
+
+  <div class="container">
+  <div class="footerColumn">
+    <div class="footerColumnInside">
+      <h3><span class="sHomeBadge"><i class="fa fa-users"></i></span>
+      Construction Sensors</h3>
+      <p>
+        <!-- DataClip -->
+        It's easy for members to find new content and the notification system keeps them up to date with new posts in content they are interested in. The powerful WYSIWYG editor makes composing content a breeze. And the reputation system encourages quality content by providing recognition from other members.<br><br></p>
+    </div>
+  </div>
+  <div class="footerColumn">
+    <div class="footerColumnInside">
+      <h3><span class="sHomeBadge"><i class="fa fa-shield"></i></span>
+        Privacy on the Commons
+      </h3>
+      <p>
+        <!-- CrowdShare Signals -->
+      Moderators will appreciate the thoughtful approaches to moderation throughout the suite. Inline moderation makes it easy to deal with problem content. The comprehensive user warning system helps keep tabs on troublemakers. And the IPS Spam Monitoring Service works to prevent spam before it even gets to your community.</p>
+    </div>
+  </div>
+  <div class="footerColumn">
+    <div class="footerColumnInside">
+      <h3><span class="sHomeBadge"><i class="fa fa-cogs"></i></span>
+      Peer-to-Peer Data</h3>
+      <p>Our member settings are highly configurable - site owners and administrators can set up sites precisely according to their needs. Extensive permission controls allow you to choose who sees or can do what. The Admin Control Panel is easy to use, yet extremely capable, and allows you to reflect real-world roles in your organization.</p>
+    </div>
+  </div>
+</div>
+
+  <div style="position: relative; height: 900px">
+
+    <div style="position:absolute; width:100%; height:100%; background-color: rgba(33, 44, 88, 0.3); z-index:99999">
+      
+      <div style="width:400px;min-height:200px;margin:0 auto; margin-top: 200px; padding:30px; color:#fff; text-align:center; font-family: helvetica, ariel">
+          <h1>CrowdShare</h1>
+          <h2>Privacy-Protected Data Collection</h2>
+      </div>
+
+    </div>
+
+    <div id="map" style="height: 100%"></div>
+    <script>
+      var map = L.Wrld.map("map", "51b73482304b3698adb83676735fb8a6", {
+        center: [33.7756, -84.3963],
+        zoom: 16
+      });
+    </script>
+
+  </div>
+
+  
+
+  </body>
+</html>
