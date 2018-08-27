@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+
+    <title>DataPortal - CityScape</title>
+
+    <script src="https://cdn-webgl.wrld3d.com/wrldjs/dist/latest/wrld.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" rel="stylesheet" />
+    
+    <!--
+    	View in browser
+    	http://localhost/site/docs/documentation/3d/wrld/
+
+    	UNITY Documentation
+    	https://docs.wrld3d.com/unity/latest/docs/examples/
+
+		JavaScript Documentation
+		https://docs.wrld3d.com/wrld.js/latest/docs/examples/
+
+    	Sample of moving map, includes Google address lookup behind scenes.
+		https://www.sitepoint.com/building-dynamic-3d-maps/
+
+    	
+    	Points of Interest (POI) - Could be used for tourism
+    	https://github.com/wrld3d/wrld-poi-api
+
+
+    	https://docs.wrld3d.com/wrld.js/latest/docs/examples/poi-api/
+    -->
+
+    <link href="/base/css/base.css" rel="stylesheet" type="text/css" >
+    <link href="/api/css/api.css" rel="stylesheet" type="text/css" >
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" >
+    <link rel="icon" type="image/x-icon" href="../img/icons/favicon.ico" />
+  </head>
+  
+  <body style="margin:0px">
+
+  <div style="position:fixed; background: #fff; width:100%; z-index:99999; border-bottom: 1px solid #ccc; ">
+    <!-- gatech/gold-lg.png -->
+    <img src="../img/logos/research/student-research" style="max-width:200px; float:left">
+
+    <!-- Georgia Tech > Network Dynamics Lab -->
+
+    <div style="height:60px; padding:20px; float:left">
+
+      <div style="font-size:18px; margin-bottom:18px">
+      Georgia Tech Construction and Infrastructure Systems (CISE)
+
+      <!--
+      Research and Project Journals - Loren Heyns
+      -->
+      <br>
+      </div>
+
+      <a href="../research">DataPortal</a> &nbsp;
+      <a href="../cityscape">Cityscape</a> &nbsp;
+      Clip Sensors &nbsp;
+      CrowdShare &nbsp;
+      Shared Mobility
+    </div>
+  </div>
+  <div style="height:80px">
+  </div>
+
+
+  <div style="position: relative; height: 900px">
+
+    <div style="position:absolute; width:50%; height:100%; background-color: rgba(33, 44, 88, 0.3); z-index:99999; margin: 0 auto">
+      
+      <div style="width:400px;min-height:200px;margin:0 auto; margin-top: 200px; padding:30px; color:#fff; text-align:center; font-family: helvetica, ariel">
+          <h1>CrowdShare</h1>
+          <h2>Privacy-Protected Data Collection</h2>
+      </div>
+
+    </div>
+
+    <div id="map" style="height: 100%"></div>
+    <script>
+      var map = L.Wrld.map("map", "51b73482304b3698adb83676735fb8a6", {
+        center: [33.7756, -84.3963],
+        zoom: 16
+      });
+    </script>
+
+  </div>
+
+  
+
+  </body>
+</html>
