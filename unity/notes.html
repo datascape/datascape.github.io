@@ -45,7 +45,11 @@
   	<pre>
 Change when working on PC for MR Toolkit:
 
-Windows-A > For Developers > Development Mode (was Windows Store apps)
+Windows (Settings, change view) > Update & Security > For Developers > Development Mode (was "Windows Store" apps)
+
+Message when activating developer mode (as Loren with Abby granting admin permission): 
+Developer mode is turned on. However, remote deployment and Windows Device Portal couldn't be found in Windows Update, so they're not available. Error code 0x80004005
+https://docs.microsoft.com/en-us/windows/uwp/debug-test-perf/device-portal-desktop
 
 When installing VS Community, (under Game development) uncheck Unity 2018 for now. (40.97 GB installed on m3136-taylor-1)
 
@@ -66,6 +70,9 @@ https://docs.microsoft.com/en-us/windows/mixed-reality/install-the-tools
 
 Note, 2017.4.10f1 icon on left side of PC desktop.
 
+
+David says regarding HoloLens emulator:
+If you try to get the video streaming example running you also have to modify a line in MrvcManager.cs, where it says “if (Plugin.IsHoloLens”. you have to remove that check as the emulator will return false for that.
 
 </pre>
 
