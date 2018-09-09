@@ -42,6 +42,33 @@
     width:10px;
     margin-right:35px;
   }
+  .toptext {
+    font-size:18px; margin-bottom:18px; padding:14px 0 6px 30px; background: #eee;
+  }
+  .toptext-mobile {
+    display: none;
+  }
+  .bluecard {
+    position:absolute;
+    top:140px;
+    right:100px;
+    z-index:1;
+    background-color:rgba(33, 44, 100, 0.6);
+    padding:50px 50px 40px 60px
+  }
+  @media (max-width: 800px) {
+    .bluecard {
+      position: relative;
+      top:auto;
+      right:auto;
+    }
+    .toptext {
+      display: none;
+    }
+    .toptext-mobile {
+      display: block;
+    }
+  }
   </style>
 
   </head>
@@ -53,9 +80,11 @@
 
     <div style="overflow:auto">
 
-      <div style="font-size:18px; margin-bottom:18px; padding:14px 0 6px 30px; background: #eee;">
+      <div class="toptext">
       Georgia Tech Construction and Infrastructure Systems (CISE)
-      <br>
+      </div>
+      <div class="toptext toptext-mobile">
+      Georgia Tech
       </div>
 
       <div style="padding-left:30px">
@@ -80,7 +109,7 @@
 
   <div style="position:relative; max-height:500px; overflow: hidden">
 
-    <div style="position:absolute; top:140px; right:100px; z-index:1; background-color: rgba(33, 44, 100, 0.6); padding:50px 50px 40px 60px">
+    <div class="bluecard">
 
             <h1 style="color: rgba(200, 230, 256, 0.6); margin-bottom:4px"><b>Network Dynamics Lab</b></h1>
             <h2 style="color:white;">Loren Heyns - loren@gatech.edu</h2>
