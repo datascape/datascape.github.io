@@ -99,4 +99,30 @@ h1 {
 	white-space: nowrap;
 }
 
-
+.toptext {
+	font-size:18px; margin-bottom:18px; padding:14px 0 6px 30px; border-bottom:1px solid #eee;
+}
+.toptext-mobile {
+	display: none;
+}
+.bluecard {
+	position:absolute;
+	top:140px;
+	right:100px;
+	z-index:1;
+	background-color:rgba(33, 44, 100, 0.6);
+	padding:50px 50px 40px 60px
+}
+@media (max-width: 800px) {
+	.bluecard {
+		position: relative;
+		top:auto;
+		right:auto;
+	}
+	.toptext {
+	 	display: none;
+	}
+	.toptext-mobile {
+	 	display: block;
+	}
+}
