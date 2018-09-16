@@ -44,7 +44,7 @@
 
 <h2>Unity Setup in Lab</h2>
 
-  	<pre>
+<pre>
 Change when working on PC for MR Toolkit:
 
 Windows (Settings, change view) > Update & Security > For Developers > Development Mode (was "Windows Store" apps)
@@ -63,15 +63,59 @@ We're currently working with the last full release,  2017.4.10, note that it tar
 
 Installed 2017.4.10f1 (appears in upper left corner)
 
-Install previous build of HoloLens emulator(10.0.14393.1358).
+
 
 Warning unless: Visual Studio 2015 with Update 1 and UWP version 1.2
+
+If VS 2015 license is expired, within initial VS screen log into your gatech account.
+
+Didn't need to get old license
+https://e5.onthehub.com/WebStore/ProductsByMajorVersionList.aspx?ws=3f907930-a19b-e011-969d-0030487d8897&vsro=8
+
+cee-lheyns3
 
 
 Pick up here:
 https://docs.microsoft.com/en-us/windows/mixed-reality/install-the-tools
 
 Note, 2017.4.10f1 icon on left side of PC desktop.
+
+
+Install previous build of HoloLens emulator(10.0.14393.1358).
+(One of two options on page above)
+
+
+1. MR Basics 100: Getting started with Unity
+https://docs.microsoft.com/en-us/windows/mixed-reality/holograms-100
+/Library/Sites/trainer180914
+
+Start from chapter 2 video
+
+File > Build Settings and choose Windows
+
+Edit > Project Settings > Quality
+
+Edit > Project Settings > Player
+Settings for Universal Windows Platform (UWP) replaced (Settings for Windows Store)
+Windows Mixed Reality (replaced the name Windows Holographic)
+
+Enable Virtual Reality Support in Settings and Add Windows Mixed Reality to the devices to use Holographic Emulation.
+
+File->Build settings > change to Universal Windows Platform, and click Switch Platform.
+
+Now you can choose Windows > Holographic Emulation
+Switch from none to Simulate in Editor
+
+Change the scripting backed to .NET under PlayerSettings
+Change VisualStudio to 2015.
+Check "Unity C# Projects"
+
+If 'Haptics' error occurs when building from Unity to VS, install the latest Windows 10 sdk:
+https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk
+
+Build worked, despite saying "Selected Visual Studio [2017] is missing required components and may not be able to build the generated project." (Opening CS 2017 prompted the install of UWP)
+
+Output resides App folder.
 
 
 David says regarding HoloLens emulator:
