@@ -40,74 +40,45 @@
 
   <div class="container">
 
-<h1>Unity for HoloLens Notes</h1>
 
-<h2>Unity Setup in Lab</h2>
+<h2>Unity for HoloLens Setup in Lab</h2>
 
 <pre>
-Change when working on PC for MR Toolkit:
-
+Switch your PC into Development Mode:
 Windows (Settings, change view) > Update & Security > For Developers > Development Mode (was "Windows Store" apps)
 
-Message when activating developer mode (as Loren with Abby granting admin permission): 
+The followng message may occur when activating developer mode, okay to ignore: 
 Developer mode is turned on. However, remote deployment and Windows Device Portal couldn't be found in Windows Update, so they're not available. Error code 0x80004005
 https://docs.microsoft.com/en-us/windows/uwp/debug-test-perf/device-portal-desktop
 
-When installing VS Community, (under Game development) uncheck Unity 2018 for now. (40.97 GB installed on m3136-taylor-1)
 
+<h2>Install Unity 2017.4.10f1</h2>Use the last full release from the archive, 2017.4.10. Avoid the newer 2018 release. Icon will be added in upper left.
 
-We're currently working with the last full release,  2017.4.10, note that it targets Unity 2017.x so when you install Unity you’ll want to get the last 2017 version from the archive rather than the newest 2018 one.
+Include:
+Windows Store .NET Scripting Backend
+Windows Store IL2CPP Scripting Backend
 
+<a href="https://docs.microsoft.com/en-us/windows/mixed-reality/install-the-tools">Install the Tools - Unity and HoloLens</a>
 
-5.4.2f2 is likely too new. (First of 2 on PC)
-
-Installed 2017.4.10f1 (appears in upper left corner)
-
-
-
-Warning unless: Visual Studio 2015 with Update 1 and UWP version 1.2
-
-If VS 2015 license is expired, within initial VS screen log into your gatech account.
-
-Didn't need to get old license
-https://e5.onthehub.com/WebStore/ProductsByMajorVersionList.aspx?ws=3f907930-a19b-e011-969d-0030487d8897&vsro=8
-
-cee-lheyns3
-
-
-Pick up here:
-https://docs.microsoft.com/en-us/windows/mixed-reality/install-the-tools
-
-Note, 2017.4.10f1 icon on left side of PC desktop.
-
-
-Install previous build of HoloLens emulator(10.0.14393.1358).
-(One of two options on page above)
-
-
-1. MR Basics 100: Getting started with Unity
-https://docs.microsoft.com/en-us/windows/mixed-reality/holograms-100
-/Library/Sites/trainer180914
-
-Start from chapter 2 video
+<a href="https://docs.microsoft.com/en-us/windows/mixed-reality/holograms-100">MR Basics 100: Getting started with Unity</a> - Steps start from chapter 2 video.
 
 File > Build Settings and choose Windows
 
-Edit > Project Settings > Quality
+Edit > Project Settings > Quality (see video)
 
-Edit > Project Settings > Player
+Edit > Project Settings > Player (see video)
 Settings for Universal Windows Platform (UWP) replaced (Settings for Windows Store)
 Windows Mixed Reality (replaced the name Windows Holographic)
 
 Enable Virtual Reality Support in Settings and Add Windows Mixed Reality to the devices to use Holographic Emulation.
 
-File->Build settings > change to Universal Windows Platform, and click Switch Platform.
+File > Build Settings > change to Universal Windows Platform, and click Switch Platform.
 
-Now you can choose Windows > Holographic Emulation
-Switch from none to Simulate in Editor
+Now you can choose Window > Holographic Emulation
+Switch from none to "Simulate in Editor"
 
-Change the scripting backed to .NET under PlayerSettings
-Change VisualStudio to 2015.
+Change the scripting backend to .NET under PlayerSettings
+Change VisualStudio to 2015. (Might not be necessary)
 Check "Unity C# Projects"
 
 If 'Haptics' error occurs when building from Unity to VS, install the latest Windows 10 sdk:
@@ -115,15 +86,34 @@ https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk
 
 Build worked, despite saying "Selected Visual Studio [2017] is missing required components and may not be able to build the generated project." (Opening CS 2017 prompted the install of UWP)
 
-Output resides App folder.
+Open the App folder and right click the Visual Studio solution file to launch.
 
 
-David says regarding HoloLens emulator:
-If you try to get the video streaming example running you also have to modify a line in MrvcManager.cs, where it says “if (Plugin.IsHoloLens”. you have to remove that check as the emulator will return false for that.
+<h2>Install Visual Studio Community</h2>Under Game development, uncheck Unity 2018 for now. <!--(40.97 GB installed on m3136-taylor-1)-->
+
+Windows Store IL2CPP Scripting Backend<!--5.4.2f2 is likely too new. (First of 2 on PC)-->
+
+Warning may prevent continuing unless VS 2105 is installed:
+Visual Studio 2015 with Update 1 and UWP version 1.2
+
+If VS 2015 license is expired, within initial VS screen log into your gatech account.
+<!--
+Didn't need to get old license
+https://e5.onthehub.com/WebStore/ProductsByMajorVersionList.aspx?ws=3f907930-a19b-e011-969d-0030487d8897&vsro=8
+-->
+
+<h2>HoloLens Emulator</h2>Install previous build of HoloLens emulator(10.0.14393.1358).
+(One of two options on page above)
+
+Note from David: If you try to get the video streaming example running you also have to modify a line in MrvcManager.cs, where it says “if (Plugin.IsHoloLens”. you have to remove that check as the emulator will return false for that.
+
+Steps for <a href="https://hololens.reality.news/how-to/hololens-dev-101-build-basic-hololens-app-minutes-0175021/">emulator config</a>.
+
+Also available: <a href="https://blogs.unity3d.com/2016/09/29/introducing-holographic-emulation/">Unity Holographic Emulation</a>
 
 </pre>
 
-<br><br>
+<br><hr><br>
 
 <h2>Unity Android Setup on Mac</h2>
 
@@ -138,26 +128,21 @@ To edit rc.common, copy out of /private/etc/ then paste back in. Enter your pw t
 
 It is generally recommended to use the Java API.
 Skip Android NDK if using Java.
+</pre>
+<br><br>
 
-
-Vuforia recommends:
-Periodically run the Android SDK Manager to check for the latest SDK revisions.
-In Android Studio, click on the SDK Manager icon in the Toolbar.
-(Third icon from the right.)
+<h2>AddOns Note</h2>
+<pre>
+Periodically run the Android SDK Manager to check for the latest SDK revisions. (Vuforia recommends)
+In Android Studio, click on the SDK Manager icon in the Toolbar. (Third icon from the right.)
 
 https://library.vuforia.com/articles/Solution/Getting-Started-with-Vuforia-for-Android-Development.html
 
-
-Second attempt to request 3D Building access from google on August 18, 2018, also declined used loren@g - Appears that Google is not ready to offer broadly yet.
+Requested 3D Building API access from Google on August 18, 2018. Google is not ready to offer broadly yet.
 https://cloud.google.com/maps-platform/gaming/
 
-
 WRLD
-
 To reset lat/lon, click setting icon and Remove Component, click UnityWorldSpace icon, click WrldMap.  Paste new lat/lon, hit Play.
-
-Indoor WRLD Unity SDK - Digital Twins of buildings, venues and campuses
-https://blogs.unity3d.com/2018/05/08/bringing-the-indoor-wrld-to-unity/
 
 </pre>
 
