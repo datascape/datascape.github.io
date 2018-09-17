@@ -49,9 +49,11 @@
       <a href="../dataclip/">Welcome</a> &nbsp;
       <a href="#slide1">Privacy</a> &nbsp;
       <a href="#history">History</a> &nbsp;
-      <a href="#history">Construction</a> &nbsp;
+      <a href="#construction">Construction</a> &nbsp;
       <a href="#model">Models</a> &nbsp;
-      <a href="#slide2">Today</a> &nbsp;
+      <a href="#today">Today</a> &nbsp;
+      <a href="#future">Future</a> &nbsp;
+      <a href="#conslusion">Conclusion</a> &nbsp;
 
     </div>
 
@@ -175,7 +177,7 @@ Please open the anonymous survey at:<br>
 
       <p>
 
-        <div style="float:left; margin-right:60px"><img src="../img/dataclip/google-glass-goofy.jpg" style="width:100%; max-width: 250px"></div>
+        <div style="float:right; margin-left:60px"><img src="../img/dataclip/google-glass-goofy.jpg" style="width:100%; max-width: 250px"></div>
 
         <b>Google Glass - 2014 to 2015, Google Glass Enterprise Edition - 2017</b>
         Today Google Glasses have expanded their market within manufacturing, where handsfree training is needed on the factory floor. Narrative may have also been a less appealing investment with emerging competition from simlar clip devices, like the Ion Clip Camera below. Perhaps a rethink of privacy notification and protection is needed before wearing data sensors in public becomes common.<br><br>
@@ -205,8 +207,13 @@ Please open the anonymous survey at:<br>
     <br><br><br><br>
 
 
-
+</div>
 <a name="construction"></a>
+<hr>
+
+<div class="container">
+<br><br><br><br><br>
+
 
 <h1>Mobile Sensors for Construction</h1>
 
@@ -308,24 +315,30 @@ Please open the anonymous survey at:<br>
 
     
 
-
-
-    <h2>AI Camera Privacy Protection Indicator Color Standard - Proposed</h2>
+    <h1>Privacy Protection Indicator Colors</h1>
 
     <p>How can we indicate the type of data capture underway, so nearby individuals 
     are aware of the degree to which their actions are recorded? 
-    Perhaps the existing "red" video recording indicator color could be expanded to include more colors for other types of recording.
+
+    Google Clips use "white" to indicate intermitant video. 
+    Continual unfiltered recording could be "red", the current standard for video recording.<br><br>
+
+
+    "green" and "blue" could be safe colors, the ones supported by Elon Musk and other privacy defenders.
+
+    
     </p>
 
-    <p>At the most basic level, generic data recording (green) would be air quality, humidity and temperature, general counts of people, sound level, etc. At the highest level, another color simultaneous to green, would indicate de-identification of facial features, removing text and audio snippets to protect identity.
+    <!--
+    <p>
+    indicator color could be expanded to include more colors for other types of recording.
+
+    At the most basic level, generic data recording (green) would be air quality, humidity and temperature, general counts of people, sound level, etc. At the highest level, another color simultaneous to green, would indicate de-identification of facial features, removing text and audio snippets to protect identity.
 
     </p>
 
     <p>Encrypted at the time of recording, sent to the network for distributed processing.</p>
 
-    <br>
-
-    <!--
     <h2>Privacy Color Standard - CrowdShare Proposal</h2>
     -->
 
@@ -397,7 +410,12 @@ Please open the anonymous survey at:<br>
         <br>
     </div>
 
-<a name="slide2"></a>
+    
+      
+
+
+
+<a name="today"></a>
     <br><br><br>
 
     
@@ -408,21 +426,39 @@ Please open the anonymous survey at:<br>
 
 <img src="../img/dataclip/construction-and-rescue.jpg" style="width:100%; max-width: 2000px">
 
+<a name="future"></a>
+
 <div class="container">
 
+<p>
+Oculus founder Palmer Luckie's new company Anduril uses AI cameras with lasers originally meant for 600-watt cosmetic hair-removal devices. Apple's TrueDepth Camera on the 2018 iPhone X uses an infrared (IR) emitter to projects over 30,000 dots onto the user's face, which are analysed by an infrared camera.
+</p>
 
-    <br>
+
+    <br><br><br><br><br>
 
 
-<h1>Data Clipping for Privacy Protection</h1>
 
-    <p>On one level, DataClips are wearable devices for capturing audio, photos, video. Some capture additional data from the surrounding environment (temperature, noise level, air quality, etc.). DataClips can record data from multiple vantage points to provide ongoing updates to 3D city models. 
+<h1>The Future of Mobile AI Cameras - Private and Secure</h1>
+
+    <p>A new breed of AI cameras could focus on assembling anonymous datasets from multiple perspectives to provide ongoing updates to 3D city models. Data captured could include temperature, noise levels, air quality, etc. 
+
+    To achieve this goal, AI could remove personal identifiers before sharing data. Example:
+
     </p>
 
-    <p>
-      How might we use AI to remove personal identifiers before sharing data within 3D city models.
 
-      Individuals would have the option to access personal data related to themselves and members of their data sharing groups using Privacy-Preserving Face Recognition.[1]&nbsp;<!--  independent of government and private organizations. -->
+    <img src="../img/dataclip/face-de-identification.png" style="width:100%; max-width:500px;"><br><br>
+      <p>
+
+        The images in the top row were de-identified to produce each image below with a similar face structure to avoid leaving holes in the source image. Most de-identification systems use the k-same framework, which is critiqued as less effective with poor quality. The new framework used above, PrivacyProtective-GAN (PP-GAN), retains "structure similarity."[7]
+        
+      The same Generative Adversarial Network (GAN) AI process is used to alter faces within video. [8] 
+      </p>
+
+
+    <p>
+      Individuals could have the option to access personal data related to themselves and members of their data sharing groups using Privacy-Preserving Face Recognition. (Erkin 2009)&nbsp;<!--  independent of government and private organizations. -->
     
     A committee of peers with multiple decryption keys could decrypt additional data in the event of a crime. 
 
@@ -430,16 +466,81 @@ Please open the anonymous survey at:<br>
     &nbsp; The shared city data model would generate crowds and traffic 
       approximating the quanities in the original video and 3D spatial photography.--><br>
     </p>
+
+
+      <p>
+      <b>Anonymous Confidentiality Scale</b> - Conveys the probability of protecting identities with the current data capture settings.
+      Clearing data of personal identifiers is rarely 100% guarenteed.
+      </p>
+
+      <!--
+      <p>
+      Anon Text to Full Text - 0 to 100<br>
+      Anon Audio to Full Audio - 0 to 100<br>
+      Anon Video to Full Video - 0 to 100<br>
+      Anon Spatial to Full Spatial - 0 to 100<br>
+      Anon Object to Full Object - 0 to 100<br>
+      </p>
+      -->
+
+       <p>
+        The more pieces of information occuring together, the harder it is to clear the data of identifiers. Information that increases likely identification of people includes: physical characteristics, height, age and gender, memberships, job type, length of service and expressed opinions. 
+      </p>
+
+      <!--
+      <p>
+       <b>For Public/Published Works:</b><br>
+       Location Identity Scale - 0 to 100<br>
+       Vehicle Identity Scale - 0 to 100<br>
+       Object Identity Scale - 0 to 100<br>
+       Individual Identity Scale - 0 to 100<br>
+       Animal Identity Scale - 0 to 100<br>
+     </p>
+      -->
+
+    <br><br><br>
+
+
+    <h1>Local Identity "Reidentification" vs. Universal Facial Recognition</h1>
+
+    
+    <p>Identity "Reidentification" is used by building and event security systems to track individuals 
+    as they move across a site.</p>
+
+    <p>Google Clips store data only on the camera, where it's fully encrypted. 
+    Google Lens identifies everything from plants to pets, but not people.
+    When Google Lens enables human identification, will it be limited to ones immediate friends, coworkers, fellow students?
+    </p>
+
+    <p>Identity reidentification seeks to find matches despite different poses, illumination, scales, occlusions, makeup and environmental variations. No existing face data is needed at the start, unlike facial recognition which requires massive datasets. This study uses the ResFace learning algorithm as the last step in a Deep Neural Network (DNN) pipeline to pull from 200,000+ faces on security cameras. Computation occurs in parallel on cameras. (Miraftabzadeh 2018) [5]</p>
+
+    <p>Bringing processing to the edge of the network to improve real-time decision making (computing and storage nodes close to Internet of Things (IoT)) devices and sensors. (Design to sustain a power outage?)</p>
+
+    <p>Discussion of automation of identity tracking of suspicious individuals using cameras in combination with data from social networks (Instagram, Twitter, and Facebook) as well as government systems.</p>
+
+    <p>
+    A proposal: Use surrounding personal sensors, on the edge, to allow the crowd itself to track the offending individual.  Pinpoint the geo-position of the individual in multiple photos to improve analysis by comparing angles and lighting differences for a single point in time. 
+    </p>
+
+    <p>Do we need an alernative to the front-facing camera?  The 135 degree camera?</p>
+
     <br>
 
 
 
+<h1>Emerging AI Cameras</h1>
 
-<img src="../img/dataclip/microsoft-qualcomm-vision-ai-developer-kit.jpg" style="width:100%; max-width: 1024px;"><br>
-<h1>Microsoft and Qualcomm - vision AI developer kit</h1>
+
+<h1>Microsoft and Qualcomm - Vision AI developer kit</h1>
+
+Powered by Qualcomm AI Engine with fully integrated support for Azure ML and Azure IoT Edge.
 
 <a href="https://azure.microsoft.com/en-us/blog/accelerating-ai-on-the-intelligent-edge-microsoft-and-qualcomm-create-vision-ai-developer-kit/
 ">Microsoft and Qualcomm - vision AI developer kit</a>
+
+
+<img src="../img/dataclip/microsoft-qualcomm-vision-ai-developer-kit.jpg" style="width:100%; max-width: 1024px;"><br>
+
 
 </div>
 
@@ -449,6 +550,9 @@ Please open the anonymous survey at:<br>
 <br>
 
 
+<h1>Amazon and Intel - DeepLens AI Camera</h1>
+
+<p>Amazon's DeepLens is a $249 device for developers who want to build and prototype vision-centric machine learning models. DeepLens consists of two parts: the model and a Lambda function that runs instances of the model in the AWS cloud.</p>
 
 <img src="../img/dataclip/AWS-DeepLens.jpg" style="float:left;width:100%; max-width:600px;">
 <img src="../img/dataclip/AWS-DeepLens-2.jpg" style="float:left;width:100%; max-width:400px;">
@@ -457,9 +561,7 @@ Please open the anonymous survey at:<br>
 <div style="clear:both"></div>
 <br>
 
-<h1>Amazon (Intel) DeepLens AI Camera</h1>
 
-<p>Amazon's DeepLens is a $249 device for developers who want to build and prototype vision-centric machine learning models. DeepLens consists of two parts: the model and a Lambda function that runs instances of the model in the AWS cloud."</p>
 
 <p>"DeepLens makes it easy to import models from virtually all the popular tools, including Caffe, TensorFlow, MXNet and others."</p>
 
@@ -482,92 +584,8 @@ Facial Recognition image
 
 <div class="container">
 
-<p>Google Clips - All data is stored only on the camera, fully encrypted.
-</p>
-
-<p>
-Apple's TrueDepth Camera on the 2018 iPhone X uses an infrared (IR) emitter to projects over 30,000 dots onto the user’s face, which are analysed by an infrared camera.
-</p>
-
-<p>
-Palmer Luckie's company Anduril 
-uses AI cameras with lasers originally meant for 600-watt cosmetic hair-removal devices.
-</p>
-<br><br>
-
-    <h2>Camera AI in Action</h2>
-
-    <p>Google Lens (I/O 2017) is changing perceptions of video as a tool for capturing and sharing data.</p>
-
-    <p>Identifies everything from plants to pets, but not people.</p>
-    <br>
-
-    <p><b>Identity reidentification as alternative to Comprehensive Facial Recognition</b></p>
-
-    <p>Identity reidentification seeks to find matches despite different poses, illumination, scales, occlusions, makeup and environmental variations. No existing face data is needed at the start, unlike facial recognition which requires massive datasets. This study uses the ResFace learning algorithm as the last step in a Deep Neural Network (DNN) pipeline to pull from 200,000+ faces on security cameras. Computation occurs in parallel on cameras. (Miraftabzadeh 2018) [5]</p>
-
-    <p>Bringing processing to the edge of the network to improve real-time decision making (computing and storage nodes close to Internet of Things (IoT)) devices and sensors. (Design to sustain a power outage?)</p>
-
-    <p>Discussion of automation of identity tracking of suspicious individuals using cameras in combination with data from social networks (Instagram, Twitter, and Facebook) as well as government systems.</p>
-
-    <p>
-    A proposal: Pinpoint the geo-position of the individual in multiple photos to improve analysis by comparing angles and lighting differences for a single point in time. Use surrounding personal sensors, on the edge, to allow the crowd itself to track the offending individual. <!-- Smart vehicles will likely use a similar sharing process.-->
-    </p>
-
-    <p>Do we need an alernative to the front-facing camera?  The 135 degree camera?</p>
-
-    <br>
-
-  
 
 
-
-
-
-<div>
-     
-      <img src="../img/dataclip/face-de-identification.png" style="width:100%; max-width: 500px;"><br>
-      <p><div class='datacircle sm-circle' style="background: #4cabfc"></div>
-
-        <div style="overflow: auto">
-        <b>Blue</b> - The original images in the top row were de-identified to produce the row below. Most de-identification systems use the k-same framework, which is critiqued as less effective with poor quality. The new framework used above, PrivacyProtective-GAN (PP-GAN), retains "structure similarity."[7]
-        </div>
-        
-      </p>
-      
-      <p>
-        The same Generative Adversarial Network (GAN) AI process is used to alter faces within video. [8] 
-      </p>
-
-      <br>
-
-      <p>
-      <b>Anonymous Confidentiality Scale</b> - Conveys the probability of protecting identities with the current data capture settings.
-      Clearing data of personal identifiers is rarely 100% guarenteed.
-      </p>
-
-      <p>
-      Anon Text to Full Text - 0 to 100<br>
-      Anon Audio to Full Audio - 0 to 100<br>
-      Anon Video to Full Video - 0 to 100<br>
-      Anon Spatial to Full Spatial - 0 to 100<br>
-      Anon Object to Full Object - 0 to 100<br>
-      </p>
-
-       <p>
-        The more pieces of information occuring together, the harder it is to clear the data of identifiers. Information that increases likely identification of people includes: physical characteristics, height, age and gender, memberships, job type, length of service and expressed opinions. 
-      </p>
-
-      <p>
-       <b>For Public/Published Works:</b><br>
-       Location Identity Scale - 0 to 100<br>
-       Vehicle Identity Scale - 0 to 100<br>
-       Object Identity Scale - 0 to 100<br>
-       Individual Identity Scale - 0 to 100<br>
-       Animal Identity Scale - 0 to 100<br>
-     </p>
-      
-    </div>
     <br>
 
     <div style="clear:both"></div>
@@ -606,10 +624,6 @@ with Multi-Key Encryption using P2P Edge Networks</h1>
       DataClip - Edge AI Cameras for Construction
       Privacy Standard Proposal -->
 
-    <p>Wearable Cameras provide an opportunity for Construction Companies to monitor and improve safety.</p>
-
-
-    <p>Let's start with a one-page survey regarding uses of mobile cameras.</p>
 
 
 
@@ -636,10 +650,15 @@ with Multi-Key Encryption using P2P Edge Networks</h1>
     <div style="clear:both; margin-bottom:40px"></div>
     -->
 
+    <a name="conclusion"></a>
+
 <br><br>
 
 
     <h2>CONCLUSION</h2>
+        <p>AI Cameras provide an opportunity for Construction Companies to monitor and improve safety, productivity and quality. Sharing data with surrounding systems will greatly increased the 
+        impact and cost savings of all contributors by removing redundancy and adding resiliancy.</p>
+
     <p>
         Through the use of de-identification, personal mobility devices can be used to contribute data to real-time city models without sacrificing privacy and security. 
         With anonymous retrieval standards, facial recognition services by Apple, Facebook, Google, Amazon and Microsoft [9,10] can be used to securely identify individuals prior to removal so they can be provided with encrypted copies of photos and videos of themselves taken by others. Under special circumstances, a group of peers could be granted permission to unlock additional data for solving crimes.
