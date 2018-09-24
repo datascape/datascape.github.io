@@ -58,7 +58,9 @@ https://docs.microsoft.com/en-us/windows/uwp/debug-test-perf/device-portal-deskt
 <h2>Visual Studio</h2><a href="https://visualstudio.microsoft.com/">Download Visual Studio Community</a> - Free for individual developers, open source projects, academic research, education, and small professional teams.<!-- Omitted all C++, mobile development with .NET, mobile development with JavaScript -->
 
 WARNNING: If you install Visual Studio 2015 on a Bootcamp PC emulator on Mac, turn off Hyper-V in Window before restating, otherwise reboot will produce black screen.  
-Always leave off Hyper-V to use Windows 10 with Bootcamp on your Mac. <a href="https://support.apple.com/en-us/HT207469">Details</a>
+Always leave off Hyper-V to use Windows 10 with Bootcamp on your Mac. Control Panel in Windows.
+Go to the "Turn Windows features on or off" section.
+Turn off Hyper-V. <a href="https://support.apple.com/en-us/HT207469">Details</a>
 
 
 <h2>Install Unity 2017.4.10f1</h2><a href="https://unity3d.com/get-unity/download/archive">Install the 2017.4.10 release</a>. Avoid the newer 2018 release. Might also need to avoid 2017.4.11 release. Unity icon will be added in upper left.
@@ -79,7 +81,12 @@ Select "Unity Personal" for free version.
 
 
 <h2>Install HoloLens Emulator and Start a Project</h2><a href="https://docs.microsoft.com/en-us/windows/mixed-reality/holograms-101e">Getting Started</a>
-Download HolographicAcademy file. Unzip for Origami folder.
+Download HolographicAcademy file. Unzip for Origami folder<!--(Main Camera and Directional Light did not appear first time when Origami folder was dragged out of zipped folder)-->. Open project in unity, cick Continue when warned that Origami is version 2017.2.  Click "skip new version" when prompted to install Unity Editor 2017.4.11.
+
+Position: 0 0 0 
+Change to "Solid Color" and black
+On left, click "Create > Create Empty"
+Rename GameObject to OrigamiCollection (or whatever)
 
 
 <h2>May not need the following</h2><a href="https://docs.microsoft.com/en-us/windows/mixed-reality/install-the-tools">Install the Tools - Unity and HoloLens</a>
