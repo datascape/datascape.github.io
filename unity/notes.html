@@ -81,13 +81,52 @@ Select "Unity Personal" for free version.
 
 
 <h2>Install HoloLens Emulator and Start a Project</h2><a href="https://docs.microsoft.com/en-us/windows/mixed-reality/holograms-101e">Getting Started</a>
-Download HolographicAcademy file. Unzip for Origami folder<!--(Main Camera and Directional Light did not appear first time when Origami folder was dragged out of zipped folder)-->. Open project in unity, cick Continue when warned that Origami is version 2017.2.  Click "skip new version" when prompted to install Unity Editor 2017.4.11.
+Download HolographicAcademy file. Unzip for Origami folder<!--(Main Camera and Directional Light did not appear first time when Origami folder was dragged out of zipped folder)-->. Open project in Unity, cick Continue when warned that Origami is version 2017.2.  Click "skip new version" when prompted to install Unity Editor 2017.4.11.
+<!-- note that "AudioPlugin" already exists in video-->
+Update Main Camera to Position: 0 0 0 and change to "Solid Color" and black
+On left, click "Create > Create Empty" and rename GameObject to OrigamiCollection (or whatever)
+Click Assets>Holograms folder in Project pane at bottom. Drag these objects into OrigamiCollection: stage, Sphere1, Sphere2
+Right click and delete Directional Light.
+Drag Lights asset into root of scene (blank area below Sphere2).
+Set OrigamiColletion position to 0 -0.5 2
 
-Position: 0 0 0 
-Change to "Solid Color" and black
-On left, click "Create > Create Empty"
-Rename GameObject to OrigamiCollection (or whatever)
+File > Build Settings > Choose Windows Store (Universal Windows Platform)
 
+Under SDK choose Universal 10 (left "Latest installed". Other option was 10.0.17134.0)
+UWP Build Type: D3D - This was already the default, stands for Direct 3D. Other option is XAML.
+Check box Unity C3 Projects
+Click "Add Open Scenes" to add the current scene to projects.
+Then click "Build". Click "New Folder" and call it "App"
+
+After Build, open "App" folder and double click on the Origami folder to launch Visual Studio.
+<!--
+Resides in Users > [User Name] > Downloads > HolographicAcademy-Holograms-101 > 
+HolographicAcademy-Holograms-101 > Origami > App
+-->
+<!--Demo video show Visual Studio Community, but Visual Studio 2017 is Loren's installed version.-->
+
+To deploy to device, set configuration to Release (change from "Debug" at top).
+Set the target to x86 (was ARM)
+On the Play menu, change from "Local Machine" to "HoloLens Emulator" (This option does not appear)
+
+---
+Tried this - no effect
+https://funwithiot.wordpress.com/2017/11/09/hololens-emulator-not-showing-visual-studio/
+
+Search for "Video Studio Installer" in your run menu. Start the installer, and then choose "Modify".
+
+Checked the highlighted red items.
+Also checked Google Android Emulator, which auto checked and Intel Hardware. (These were not highlighted in red)
+(But Install reported: Couldn't install AndroidEmulator_API23V2 upon completion.)
+
+Not a checkable option:
+"Emulators > Windows 10 Mobile Emulator (Creators Update)"   
+---
+
+Try this: Hyper-V in Windows 10 on MacBook Pro
+https://apple.stackexchange.com/questions/281599/hyper-v-in-windows-10-on-macbook-pro
+
+Install the tools
 
 <h2>May not need the following</h2><a href="https://docs.microsoft.com/en-us/windows/mixed-reality/install-the-tools">Install the Tools - Unity and HoloLens</a>
 
