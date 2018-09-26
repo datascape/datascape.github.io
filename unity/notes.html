@@ -123,8 +123,17 @@ Not a checkable option:
 "Emulators > Windows 10 Mobile Emulator (Creators Update)"   
 ---
 
-Try this: Hyper-V in Windows 10 on MacBook Pro
-https://apple.stackexchange.com/questions/281599/hyper-v-in-windows-10-on-macbook-pro
+How to run Hyper-V in Windows 10 on MacBook Pro
+
+<a href="http://nuts4.net/post/hack-force-vt-x-to-be-always-on-when-booting-to-windows-on-your-macbook">Download and edit zip file (first link in list)</a><!--
+Same as:
+https://apple.stackexchange.com/questions/281599/hyper-v-in-windows-10-on-macbook-pro-->
+
+Hold Command+R (rather than option) before the chime/apple logo appears to boot into Apple Recovery.
+
+Once you run "csrutil disable" in Recovery Mode, switch back to your normal OSX installation, and open a terminal window in the folder where you extracted rEFInd, and run "./refind-install"
+
+
 
 Install the tools
 
