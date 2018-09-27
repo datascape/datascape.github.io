@@ -131,7 +131,7 @@ https://apple.stackexchange.com/questions/281599/hyper-v-in-windows-10-on-macboo
 
 Hold Command+R (rather than option) before the chime/apple logo appears to boot into Apple Recovery.
 
-Once you run "csrutil disable" in Recovery Mode, switch back to your normal OSX installation, and open a terminal window in the folder where you extracted rEFInd, and run "./refind-install"
+Once you run "csrutil disable" in Recovery Mode, switch back to your normal OSX installation (Hold Option Key), and open a terminal window in the folder where you extracted rEFInd, and run "./refind-install"  (You'll likely be prompted to enter your password via Sudo. If don't get prompted to enter your password, and you don't see an Installing rEFind message, try installing Sudo.)
 
 
 
@@ -182,8 +182,12 @@ Didn't need to get old license
 https://e5.onthehub.com/WebStore/ProductsByMajorVersionList.aspx?ws=3f907930-a19b-e011-969d-0030487d8897&vsro=8
 -->
 
-<h2>HoloLens Emulator</h2>Install previous build of HoloLens emulator(10.0.14393.1358).
-(One of two options on page above)
+<h2>HoloLens Emulator</h2>
+
+Install newer of two options on page above. Newer file adds the word Setup: "HoloLensEmulatorSetup".
+IMPORTANT: Right-click and choose Run As Administrator.
+
+Did not Install previous build of HoloLens emulator(10.0.14393.1358) on Bootcamp with VS 2017. It timed out quickly, but I had not rich-clicke Run as Administrator. (under bootcamp)
 
 Note from David: If you try to get the video streaming example running you also have to modify a line in MrvcManager.cs, where it says “if (Plugin.IsHoloLens”. you have to remove that check as the emulator will return false for that.
 
