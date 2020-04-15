@@ -1,8 +1,9 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en-us">
   <head>
-
-    <title>DataPortal - CityScape</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DataPortal - CityScape</title>
 
     <script src="https://cdn-webgl.wrld3d.com/wrldjs/dist/latest/wrld.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" rel="stylesheet" />
@@ -68,14 +69,26 @@
 
   <div style="position: relative; height: 900px">
 
-    <div style="position:absolute; width:100%; max-width: 550px; height:100%; background-color: rgba(33, 44, 88, 0.9); z-index:1; margin: 0 auto">
+    <div id="sidePanel" style="position:absolute; width:100%; max-width: 550px; height:100%; background-color: rgba(33, 44, 88, 0.9); z-index:1; margin: 0 auto">
       
-      <div style="width:400px;min-height:200px;margin:0 auto; margin-top: 120px; padding:30px; color:#fff; font-family: helvetica, ariel">
+      <div style="position:relative; width:400px;min-height:200px;margin:0 auto; margin-top: 20px; padding:30px; color:#fff; font-family: helvetica, ariel">
+
+          <script>
+            function toggleDiv(id) {
+              var x = document.getElementById(id);
+              if (x.style.display === "none") {
+                x.style.display = "block";
+              } else {
+                x.style.display = "none";
+              }
+            }
+          </script>
+          <div id="hideTopPanel" style="position:absolute;right:-20px;top:8px;color:#fff;font-size:22px;cursor:pointer;padding-right:10px" onclick="toggleDiv('sidePanel')">✕</div>
+
+          <br><br>
           <h1>Cityscape</h1>
 
           <div style="font-size: 18px">
-
-          <b>3D City Data</b><br><br>
           
           - <a href="https://cloud.google.com/maps-platform/gaming/" style="color:orange">Google 3D Building API</a><br>
           - <a href="https://www.wrld3d.com/" style="color:orange">WRLD Map for Unity and Javascript (current)</a><br>
