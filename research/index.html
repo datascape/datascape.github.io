@@ -10,7 +10,7 @@
 
 <link rel="stylesheet" id="ivan-fonts-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CRaleway%3A300%2C400%2C700&amp;subset=latin" type="text/css" media="all">
 
-<link href="../css/base.css" rel="stylesheet" type="text/css" >
+<link href="/localsite/css/base.css" rel="stylesheet" type="text/css" >
 <link href="../css/dataportal.css" rel="stylesheet" type="text/css" >
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" >
 <link rel="icon" type="image/x-icon" href="https://dataportal.github.io/img/icons/favicon.ico" />
@@ -47,7 +47,14 @@
   width:10px;
   margin-right:35px;
 }
-
+.bluecard {
+  position:absolute;
+  top:25%;
+  right:100px;
+  z-index:1;
+  background-color:rgba(33, 44, 100, 0.8);
+  padding:50px 50px 40px 60px
+}
 @media (max-width: 800px) {
   .bluecard {
     position: relative;
@@ -110,20 +117,25 @@
 
     <div class="bluecard">
 
-            <h1 style="color: rgba(200, 230, 256, 0.6); margin-bottom:4px"><b>Network Dynamics&nbsp;Lab</b></h1>
-            <h2 style="color:white;">Loren Heyns &#9675; loren@gatech.edu</h2>
+            <h1 style="color: rgba(200, 230, 256, 0.6); padding-bottom:0px; margin-bottom:0px; font-weight:100"><b>Net&nbsp;Positive Engineering</b></h1>
+            <h2 style="color:white; padding-top:0px; margin-top:4px">Loren Heyns &bull; loren@gatech.edu</h2>
             <!-- big bullet &#9679; -->
             <br>
             
-            <h3 style="color:#ddd; margin-bottom:4px"><b>Georgia Tech Construction and&nbsp;Infrastructure&nbsp;Systems</b></h3>
-
-            <h3 style="color:#ddd; margin-top:4px">Advisor John Taylor,&nbsp; Mentor&nbsp;Rachel&nbsp;Samuels</h3>
-
-
+            <h3 style="color:#ddd; margin:0;margin-bottom:4px"><b>Georgia Tech Construction and&nbsp;Infrastructure&nbsp;Systems</b></h3>
+            <!--
+            <h3 style="color:#ddd; margin:0;margin-bottom:4px">Computational Science and Engineering&nbsp;(CSE)</h3>
+            -->
+            <h3 style="color:#ddd; margin:0;margin-bottom:0px">Network Dynamics Lab - Advisor Dr. John Taylor</h3>
+            
+            <!--
+              ,&nbsp; Mentor&nbsp;Rachel&nbsp;Samuels
+            -->
     </div>
 
-    <a class="bluecard-behind" href="#intro"><img src="../img/cityscape/city-ny.jpg" style="width:100%"></a>
-
+    <div class="bluecard-behind" style="overflow:hidden; height:450px">
+      <a href="#intro" style="margin-top:-150px; "><img src="../img/cityscape/city-ny.jpg" style="width:100%"></a>
+    </div>
   </div>
 
 
@@ -154,17 +166,18 @@
 <div class="container">
   <div class="footerColumns">
     <div class="footerColumn">
+      <a href="../model/">
       <div class="footerColumnInside">
         <div class="footerColumnTitle"><span class="sHomeBadge"><i class="fa fa-globe"></i></span>
         Industry Input-Output Modeling
         </div>
         <p>
 
-          <a href="../model/">Sustainable Communities Web&nbsp;Challenge</a><br>
+          <span class="link">Sustainable Communities Web&nbsp;Challenge</span><br>
 
           Created to streamline the US EPA's new input-output API, the model.earth website 
           provides environmentally-enabled impact charts and maps 
-          using county industry levels based on employment and payroll levels.
+          using county industry levels based on employment and payroll data.
 
           <!--
           <a href="https://model.earth/community/response/">Community Response Maps</a><br>
@@ -175,6 +188,7 @@
           -->
         </p>
       </div>
+      </a>
     </div>
 
     <!--
@@ -192,25 +206,29 @@
     </div>
     -->
     <div class="footerColumn">
+      <a href="../storms">
       <div class="footerColumnInside">
+        
         <div class="footerColumnTitle"><span class="sHomeBadge"><i class="fa fa-users"></i></span>
         Disaster Mobility Patterns</div>
         <p>
-          <a href="../dataclip">Impact of Extreme Storms on Human&nbsp;Mobility</a><br>
-          Studying changes in mobility patterns allows for informed economic and environmental decisions as communities and states create incentives to mobilize industry while flexibly resuming travel, water and energy usage following disasters.
-
+          <span class="link">Impact of Extreme Storms on Human&nbsp;Mobility</span><br>
+          Analyzing changes in mobility patterns following disasters allows organizations to make informed economic and environmental decisions for spending and tax incentives to mobilize industries when resuming travel and energy use.
         </p>
+      
       </div>
+      </a>
     </div>
 
     <div class="footerColumn">
+      <a href="../crowdsense">
       <div class="footerColumnInside">
         <div class="footerColumnTitle"><span class="sHomeBadge"><i class="fa fa-shield"></i></span>
           Privacy on the Digital Commons
         </div>
         <p>
-          <a href="../crowdsense">CrowdSense - Multi-camera, Multi-key Privacy</a><br>
-          In the midst of the greatest expansion in information sharing technology, we find ourselves entering a digital version of the Tragedy of the Commons, in which siloed firms fail to collaboratively integrate the information we generate.
+          <span class="link">CrowdSense - Multicamera, Multikey Privacy</span><br>
+          In the midst of the greatest expansion in information gathering technology, we find ourselves entering a digital version of the Tragedy of the Commons, in which siloed firms fail to collaboratively exchange the mutually beneficial information we generate daily.
 
           <!--
             For a future project:
@@ -218,6 +236,7 @@
           -->
         </p>
       </div>
+      </a>
     </div>
   </div>
 
