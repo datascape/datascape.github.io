@@ -8,65 +8,83 @@
   <meta name="keywords" content="Peer-to-peer privacy protection.">
 
 
-    <link href="../css/base.css" rel="stylesheet" type="text/css" >
-    <link href="../css/dataportal.css" rel="stylesheet" type="text/css" >
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" >
-    <link rel="icon" type="image/x-icon" href="https://dataportal.github.io/img/icons/favicon.ico" />
+<link rel="stylesheet" id="ivan-fonts-css" href="https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CRaleway%3A300%2C400%2C700&amp;subset=latin" type="text/css" media="all">
 
-  <!-- For Facebook -->
-  <meta property="og:title" content="DataPortal - Research and Project Journals - Loren Heyns" />
-  <meta property="og:type" content="article" />
-  <meta property="og:image" content="https://dataportal.github.io/img/cityscape/cover-fb.jpg" />
-  <meta property="og:url" content="https://dataportal.github.io/research" />
-  <meta property="og:description" content="DataClip, CrowdSense, Unity3D - By collecting and aggregating anonymous, open spatial data we can improve health, transit, education, work, air quality, water quality, energy conservation. Free your data and free your community to reach its full potential." />
+<link href="../css/base.css" rel="stylesheet" type="text/css" >
+<link href="../css/dataportal.css" rel="stylesheet" type="text/css" >
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" >
+<link rel="icon" type="image/x-icon" href="https://dataportal.github.io/img/icons/favicon.ico" />
 
-  <!-- For Twitter -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="DataPortal - Research and Project Journals - Loren Heyns" />
-  <meta name="twitter:description" content="DataClip, CrowdSense, Unity3D - By collecting and aggregating anonymous, open spatial data we can improve health, transit, education, work, air quality, water quality, energy conservation. Free your data and free your community to reach its full potential." />
-  <meta name="twitter:image" content="../img/cityscape/cover-fb.jpg" />
+<!-- For Facebook -->
+<meta property="og:title" content="DataPortal - Research and Project Journals - Loren Heyns" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://dataportal.github.io/img/cityscape/cover-fb.jpg" />
+<meta property="og:url" content="https://dataportal.github.io/research" />
+<meta property="og:description" content="DataClip, CrowdSense, Unity3D - By collecting and aggregating anonymous, open spatial data we can improve health, transit, education, work, air quality, water quality, energy conservation. Free your data and free your community to reach its full potential." />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="DataPortal - Research and Project Journals - Loren Heyns" />
+<meta name="twitter:description" content="DataClip, CrowdSense, Unity3D - By collecting and aggregating anonymous, open spatial data we can improve health, transit, education, work, air quality, water quality, energy conservation. Free your data and free your community to reach its full potential." />
+<meta name="twitter:image" content="../img/cityscape/cover-fb.jpg" />
 
 
-    <style>
-  .datacircle {
-    background-color:blue;
-    border:1px solid gold;    
-    height:50px;
-    width:50px;
-    border-radius:50%;
-    -moz-border-radius:50%;
-    -webkit-border-radius:50%;
-    float:left;
-    margin-right:20px;
+
+<style>
+.datacircle {
+  background-color:blue;
+  border:1px solid gold;    
+  height:50px;
+  width:50px;
+  border-radius:50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+  float:left;
+  margin-right:20px;
+}
+.med-circle {
+  height:10px;
+  width:10px;
+  margin-right:35px;
+}
+
+@media (max-width: 800px) {
+  .bluecard {
+    position: relative;
+    top:auto;
+    right:auto;
+    margin:50px 40px 50px 40px;
   }
-  .med-circle {
-    height:10px;
-    width:10px;
-    margin-right:35px;
+  .bluecard-bkgd {
+    background: url(../img/cityscape/city-ny.jpg) no-repeat center;
   }
-  </style>
+  .bluecard-behind {
+    display: none;
+  }
+}
+</style>
 
-  </head>
-  
-  <body style="margin:0px">
+</head>
 
-  <div style="position:fixed; background: #fff; width:100%; z-index:99999; border-bottom: 1px solid #ddd;">
-    <img src="../img/logos/research/student-research.jpg" style="max-width:200px; float:left">
+<body style="margin:0px">
 
-    <div style="overflow:auto">
+<header>
+<div style="position:fixed; background: #fff; width:100%; z-index:99999; border-bottom: 1px solid #ddd;">
+  <img src="../img/logos/research/student-research.jpg" style="max-width:200px; float:left">
 
-      <div class="toptext">
+  <div style="overflow:auto">
+
+    <div class="toptext" style="font-size:18px;">
       Loren Heyns, Computational Science and Engineering (CSE)
-
-      <!--
-      Georgia Tech Construction and Infrastructure Systems (CISE)
-      -->
+    </div>
+    <div class="toptext toptext-mobile">
+      <div style="font-size:24px">Loren Heyns</div><hr>
+      <div style="height:18px;overflow:hidden">
+        Computational Science and Engineering (CSE)
       </div>
-      <div class="toptext toptext-mobile">
-      Georgia Tech
-      </div>
+    </div>
 
-    <div style="padding-left:30px">
+    <div class="topnav hideMobile" style="padding-left:30px">
       <a href="../research/">Research</a> &nbsp;
       <a href="../georgia/">Model Georgia</a> &nbsp;
       <a href="../model/">Model Earth</a> &nbsp;
@@ -77,33 +95,34 @@
       <a href="https://modelearth.github.io/positive/energy/">Bioeconomies</a>
     </div>
 
-
-    </div>
   </div>
-  <div style="height:80px">
-  </div>
+</div>
+<div style="height:95px">
+</div>
+</header>
 
   <!--
     GOOGLE 3D BUILDING API
     https://cloud.google.com/maps-platform/gaming/
   -->
 
-  <div style="position:relative; max-height:500px; overflow: hidden">
+  <div class="bluecard-bkgd" style="position:relative; max-height:500px; overflow: hidden">
 
     <div class="bluecard">
 
-            <h1 style="color: rgba(200, 230, 256, 0.6); margin-bottom:4px"><b>Network Dynamics Lab</b></h1>
-            <h2 style="color:white;">Loren Heyns - loren@gatech.edu</h2>
+            <h1 style="color: rgba(200, 230, 256, 0.6); margin-bottom:4px"><b>Network Dynamics&nbsp;Lab</b></h1>
+            <h2 style="color:white;">Loren Heyns &#9675; loren@gatech.edu</h2>
+            <!-- big bullet &#9679; -->
             <br>
             
-            <h3 style="color:#ddd; margin-bottom:4px"><b>Georgia Tech Construction and Infrastructure Systems</b></h3>
+            <h3 style="color:#ddd; margin-bottom:4px"><b>Georgia Tech Construction and&nbsp;Infrastructure&nbsp;Systems</b></h3>
 
-            <h3 style="color:#ddd; margin-top:4px">Advisor John Taylor, &nbsp;Mentor Rachel Samuels</h3>
+            <h3 style="color:#ddd; margin-top:4px">Advisor John Taylor,&nbsp; Mentor&nbsp;Rachel&nbsp;Samuels</h3>
 
 
     </div>
 
-    <a href="#intro"><img src="../img/cityscape/city-ny.jpg" style="width:100%"></a>
+    <a class="bluecard-behind" href="#intro"><img src="../img/cityscape/city-ny.jpg" style="width:100%"></a>
 
   </div>
 
@@ -130,82 +149,79 @@
 
 <a name="intro"></a>
 
+
 <br><br>
 <div class="container">
-  <div class="footerColumn">
-    <div class="footerColumnInside">
-      <h3><span class="sHomeBadge"><i class="fa fa-globe"></i></span>
-      Industry Input-Output Modeling</h3>
-      <p>
+  <div class="footerColumns">
+    <div class="footerColumn">
+      <div class="footerColumnInside">
+        <div class="footerColumnTitle"><span class="sHomeBadge"><i class="fa fa-globe"></i></span>
+        Industry Input-Output Modeling
+        </div>
+        <p>
 
-        <a href="../model/">Sustainable Communities Web&nbsp;Challenge</a><br>
+          <a href="../model/">Sustainable Communities Web&nbsp;Challenge</a><br>
 
-        At Georgia Economic Development, we're working in partnersip with the 
-        US EPA to provide embeddable impact tools to communities.  
-        <!-- a href="https://model.earth/community/info/?view=mosaic&count=10" -->
-        The model.earth website 
-        provides environmentally-enabled <span style="white-space: nowrap;">input-output</span> charts and maps 
-        using industry NAICS codes.
+          Created to streamline the US EPA's new input-output API, the model.earth website 
+          provides environmentally-enabled impact charts and maps 
+          using county industry levels based on employment and payroll levels.
 
-        <!--
-        <a href="https://model.earth/community/response/">Community Response Maps</a><br>
+          <!--
+          <a href="https://model.earth/community/response/">Community Response Maps</a><br>
 
-        <a href="../unity">AR Toolkits, Voice Controls, Object Detection</a><br>
+          <a href="../unity">AR Toolkits, Voice Controls, Object Detection</a><br>
 
-        Vuforia brings an important capability to HoloLens - the power to connect AR experiences to specific images and objects in the environment, to document machinery, project flow and logistics.
-        -->
-      </p>
+          Vuforia brings an important capability to HoloLens - the power to connect AR experiences to specific images and objects in the environment, to document machinery, project flow and logistics.
+          -->
+        </p>
+      </div>
+    </div>
+
+    <!--
+    <div class="footerColumn">
+      <div class="footerColumnInside">
+        <h3><span class="sHomeBadge"><i class="fa fa-users"></i></span>
+        Wearable Clip Sensors</h3>
+        <p>
+          <a href="../dataclip">Data Clips - Privacy Protection Standard
+          </a><br>
+          By collecting and aggregating anonymous, open data we can improve health, transit, education, work, air quality, water quality, energy conservation using existing camera feeds for private data exchange.
+
+        </p>
+      </div>
+    </div>
+    -->
+    <div class="footerColumn">
+      <div class="footerColumnInside">
+        <div class="footerColumnTitle"><span class="sHomeBadge"><i class="fa fa-users"></i></span>
+        Disaster Mobility Patterns</div>
+        <p>
+          <a href="../dataclip">Impact of Extreme Storms on Human&nbsp;Mobility</a><br>
+          Studying changes in mobility patterns allows for informed economic and environmental decisions as communities and states create incentives to mobilize industry while flexibly resuming travel, water and energy usage following disasters.
+
+        </p>
+      </div>
+    </div>
+
+    <div class="footerColumn">
+      <div class="footerColumnInside">
+        <div class="footerColumnTitle"><span class="sHomeBadge"><i class="fa fa-shield"></i></span>
+          Privacy on the Digital Commons
+        </div>
+        <p>
+          <a href="../crowdsense">CrowdSense - Multi-camera, Multi-key Privacy</a><br>
+          In the midst of the greatest expansion in information sharing technology, we find ourselves entering a digital version of the Tragedy of the Commons, in which siloed firms fail to collaboratively integrate the information we generate.
+
+          <!--
+            For a future project:
+            Lastly, we outline a proposal for using affordable, 3D-printed neural networks as anonymous data collection devices in public spaces.
+          -->
+        </p>
+      </div>
     </div>
   </div>
 
-  <!--
-  <div class="footerColumn">
-    <div class="footerColumnInside">
-      <h3><span class="sHomeBadge"><i class="fa fa-users"></i></span>
-      Wearable Clip Sensors</h3>
-      <p>
-        <a href="../dataclip">Data Clips - Privacy Protection Standard
-        </a><br>
-        By collecting and aggregating anonymous, open data we can improve health, transit, education, work, air quality, water quality, energy conservation using existing camera feeds for private data exchange.
-
-      </p>
-    </div>
-  </div>
-  -->
-  <div class="footerColumn">
-    <div class="footerColumnInside">
-      <h3><span class="sHomeBadge"><i class="fa fa-users"></i></span>
-      Disaster Mobility Patterns</h3>
-      <p>
-        <a href="../dataclip">Impact of Extreme Storms on Human&nbsp;Mobility</a><br>
-        Studying changes in mobility patterns allows for informed economic and environmental decisions as communities and states create incentives to mobilize industry while flexibly resuming travel, water and energy usage following disasters.
-
-      </p>
-    </div>
-  </div>
-
-  <div class="footerColumn">
-    <div class="footerColumnInside">
-      <h3><span class="sHomeBadge"><i class="fa fa-shield"></i></span>
-        Privacy on the Digital Commons
-      </h3>
-      <p>
-        <a href="../crowdsense">CrowdSense - Multi-camera, Multi-key Privacy</a><br>
-        In the midst of the greatest information sharing opportunities, we find ourselves entering a digital version of the Tragedy of the Commons, in which siloed firms fail to collaboratively integrate most of the information we generate.
-
-        <!--
-          For a future project:
-          Lastly, we outline a proposal for using affordable, 3D-printed neural networks as anonymous data collection devices in public spaces.
-        -->
-      </p>
-    </div>
-  </div>
-  
   <div style="clear:both"></div>
-
-
-  
-
   <br><br>
 
 <!--
